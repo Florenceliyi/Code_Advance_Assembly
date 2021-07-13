@@ -5,7 +5,9 @@
       <NavBar/>
     </el-aside>
     <el-main>
-      <Main/>
+        <keep-alive>
+          <component :is="getCurrentComponent"></component>
+        </keep-alive>
       </el-main>
   </el-container>
 </el-container>
@@ -13,13 +15,21 @@
 </template>
 
 <script>
-import NavBar from './NavBar.vue'
-import Main from './subComponents/MainContent.vue'
+import NavBar from '@/components/NavBar.vue'
+// import proxyContent from '@/components/subComponents/proxyContent.vue'
+import allComponents from  '@/config/componentsTotal'
+console.log('allComponents', {...allComponents});
 export default {
-  name: "HelloWorld",
+  name: "Home",
   components:{
     NavBar,
-    Main
+    // proxyContent
+    ...allComponents
+  },
+  computed:{
+    getCurrentComponent(){
+      return  allComponents['proxyContent']
+    }
   },
   props: {
     
@@ -28,6 +38,9 @@ export default {
     return {
      
     };
+  },
+  created(){
+    console.log('created', this.$store.state.currentComponent)
   },
   methods: {
      handleOpen(key, keyPath) {
