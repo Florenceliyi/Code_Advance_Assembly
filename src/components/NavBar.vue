@@ -18,7 +18,7 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="proxy" @click="handleClickOnMenuItem">proxy</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
+              <el-menu-item index="reflect" @click="handleClickOnMenuItem">reflect</el-menu-item>
               <el-menu-item index="1-3">选项3</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -41,8 +41,10 @@ export default {
       console.log(key, keyPath);
     },
     handleClickOnMenuItem(component) {
+        console.log('component', component);
         const {index} = component
         this.$store.commit('SHOW_CONTENT', index)
+        console.log('state', this.$store.state.proxy.currentComponent);
     }
   },
 };

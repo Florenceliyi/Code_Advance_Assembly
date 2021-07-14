@@ -5,11 +5,11 @@ const state = {
 const mutations = {
     SHOW_CONTENT: (state, key) => {
         console.log('key',key);
-        if (key && key === 'proxy') {
+        if (key) {
             Object.keys(config.SYNTAXOFMAP).forEach(item => {
                 if (item === key) {
                     state.currentComponent = config.SYNTAXOFMAP[item]
-                    console.log(state.currentComponent);
+                    console.log('state.currentComponent',state.currentComponent);
                 }
             })
         }

@@ -26,9 +26,17 @@ export default {
     // proxyContent
     ...allComponents
   },
+  watch:{
+    "$store.state.currentComponent"(val, newVal){
+      console.log('val',val);
+      console.log('newVal', newVal);
+    }
+  },
   computed:{
     getCurrentComponent(){
-      return  allComponents['proxyContent']
+    console.log('currentCom',this.$store.state)
+    // console.log('currentCom1111',allComponents[this.$store.state.currentComponent])
+      return  allComponents[this.$store.state.proxy.currentComponent]
     }
   },
   props: {
