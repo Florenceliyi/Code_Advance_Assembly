@@ -17,9 +17,7 @@
               <span>ES6语法</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="proxy" @click="handleClickOnMenuItem">proxy</el-menu-item>
-              <el-menu-item index="reflect" @click="handleClickOnMenuItem">reflect</el-menu-item>
-              <el-menu-item index="1-3">选项3</el-menu-item>
+              <el-menu-item v-for="item in showList" :key="item.value" :index="item.index" @click="handleClickOnMenuItem">{{ item.value }}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -29,9 +27,13 @@
 </template>
 
 <script>
+import config from '@/config'
+console.log('config', config);
 export default {
   data() {
-    return {};
+    return {
+      showList: config.NAVBARMAP
+    };
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -41,7 +43,6 @@ export default {
       console.log(key, keyPath);
     },
     handleClickOnMenuItem(component) {
-        console.log('component', component);
         const {index} = component
         this.$store.commit('SHOW_CONTENT', index)
         console.log('state', this.$store.state.proxy.currentComponent);

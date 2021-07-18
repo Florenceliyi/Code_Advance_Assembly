@@ -16,26 +16,15 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue'
-// import proxyContent from '@/components/subComponents/proxyContent.vue'
 import allComponents from  '@/config/componentsTotal'
-console.log('allComponents', {...allComponents});
 export default {
   name: "Home",
   components:{
     NavBar,
-    // proxyContent
     ...allComponents
-  },
-  watch:{
-    "$store.state.currentComponent"(val, newVal){
-      console.log('val',val);
-      console.log('newVal', newVal);
-    }
   },
   computed:{
     getCurrentComponent(){
-    console.log('currentCom',this.$store.state)
-    // console.log('currentCom1111',allComponents[this.$store.state.currentComponent])
       return  allComponents[this.$store.state.proxy.currentComponent]
     }
   },
@@ -81,7 +70,7 @@ export default {
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
-    line-height: 100vh;
+    height: 100vh;
   }
   
   /* body > .el-container {

@@ -1,3 +1,4 @@
+const path = require('path');
 module.exports = {
     /**
      * You will need to set publicPath if you plan to deploy your site under a sub path,
@@ -11,7 +12,7 @@ module.exports = {
         // it can be accessed in index.html to inject the correct title.
         resolve: {
             alias: {
-                '@': resolve('src')
+                '@': path.join(__dirname, 'src')
             }
         },
     }
